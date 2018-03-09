@@ -26,6 +26,11 @@ const app = new Vue({
 
       this.title = ''
       this.description = ''
+      //
+      // NOTE: reset the focus...
+      //
+      this.$refs.description.blur()
+      this.$refs.title.focus()
     }
   }
 })
