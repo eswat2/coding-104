@@ -21,7 +21,10 @@
              v-for="todo in todos" 
              v-bind:class="classFor(todo)" 
              v-on:click="toggle(todo)">
-          <strong>{{ todo.title }}</strong>: {{ todo.description }}
+          <strong>{{ todo.title }}</strong>:
+          <i class="fa fa-check ikon" v-if="todo.completed"></i>
+          <i class="fa fa-minus ikon" v-else></i>
+          <div v-if="todo.description.length > 0">{{ todo.description }}</div>
         </div>
       </div>
       <hr>
