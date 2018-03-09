@@ -14,34 +14,38 @@
     <link href="main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="app" class="container mb-3">
-      <h2 class="header">{{header}}</h2>
-      <div class="alert boxed" 
-           v-for="todo in todos" 
-           v-bind:class="classFor(todo)" 
-           v-on:click="toggle(todo)">
-        <strong>{{ todo.title }}</strong>: {{ todo.description }}
+    <div id="wrapper" class="container mb-3">
+      <div id="app">
+        <h2 class="header">ToDo's:</h2>
+        <div class="alert boxed" 
+             v-for="todo in todos" 
+             v-bind:class="classFor(todo)" 
+             v-on:click="toggle(todo)">
+          <strong>{{ todo.title }}</strong>: {{ todo.description }}
+        </div>
       </div>
       <hr>
-      <div class="input-group boxed">
-        <div class="input-group-prepend">
-          <span class="input-group-text m-box">Title:</span>
+      <div id="form">
+        <div class="input-group boxed">
+          <div class="input-group-prepend">
+            <span class="input-group-text m-box">Title:</span>
+          </div>
+          <input type="text" 
+                 class="form-control" 
+                 v-model="title" 
+                 v-on:keyup.enter="submit" 
+                 ref="title">
         </div>
-        <input type="text" 
-               class="form-control" 
-               v-model="title" 
-               v-on:keyup.enter="submit" 
-               ref="title">
-      </div>
-      <div class="input-group boxed">
-        <div class="input-group-prepend">
-          <span class="input-group-text m-box">Description:</span>
+        <div class="input-group boxed">
+          <div class="input-group-prepend">
+            <span class="input-group-text m-box">Description:</span>
+          </div>
+          <input type="text" 
+                 class="form-control" 
+                 v-model="description" 
+                 v-on:keyup.enter="submit" 
+                 ref="description">
         </div>
-        <input type="text" 
-               class="form-control" 
-               v-model="description" 
-               v-on:keyup.enter="submit" 
-               ref="description">
       </div>
     </div>
     <script src="main.js"></script>
