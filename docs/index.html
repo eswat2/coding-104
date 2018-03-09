@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Coding 103</title>
+    <title>Coding 104</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           rel="stylesheet"
           type="text/css">
@@ -19,7 +19,7 @@
       <div class="alert boxed" 
            v-for="todo in todos" 
            v-bind:class="classFor(todo)" 
-           v-on:click="complete(todo)">
+           v-on:click="toggle(todo)">
         <strong>{{ todo.title }}</strong>: {{ todo.description }}
       </div>
       <hr>
@@ -27,16 +27,13 @@
         <div class="input-group-prepend">
           <span class="input-group-text m-box">Title:</span>
         </div>
-        <input type="text" class="form-control" v-model="title">
+        <input type="text" class="form-control" v-model="title" v-on:keyup.enter="submit">
       </div>
       <div class="input-group boxed">
         <div class="input-group-prepend">
           <span class="input-group-text m-box">Description:</span>
         </div>
-        <input type="text" class="form-control" v-model="description">
-      </div>
-      <div class="input-group boxed">
-        <button class="btn btn-primary" v-on:click="submit">Submit</button>
+        <input type="text" class="form-control" v-model="description" v-on:keyup.enter="submit">
       </div>
     </div>
     <script src="main.js"></script>

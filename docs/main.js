@@ -8,10 +8,10 @@ const app = new Vue({
   },
   methods: {
     classFor: function(item) {
-      return item.completed ? ['alert-danger'] : ['alert-primary']
+      return item.completed ? ['alert-success'] : ['alert-primary']
     },
-    complete: function(item) {
-      item.completed = true
+    toggle: function(item) {
+      item.completed = !item.completed
     },
     submit: function() {
       const title = this.title
