@@ -30,24 +30,23 @@
       <hr>
       <div id="form">
         <div class="input-group boxed">
-          <div class="input-group-prepend">
-            <span class="input-group-text m-box">Title:</span>
-          </div>
           <input type="text" 
                  class="form-control" 
                  v-model="title" 
                  v-on:keyup.enter="submit" 
                  ref="title">
+          <div class="input-group-append">
+            <span class="input-group-text m-box">Title</span>
+          </div>
         </div>
         <div class="input-group boxed">
-          <div class="input-group-prepend">
-            <span class="input-group-text m-box">Description:</span>
+          <textarea class="form-control"
+                    v-model="description" 
+                    v-on:keyup.enter="submit" 
+                    ref="description"></textarea>
+          <div class="input-group-append">
+            <span class="input-group-text m-box">Description</span>
           </div>
-          <input type="text" 
-                 class="form-control" 
-                 v-model="description" 
-                 v-on:keyup.enter="submit" 
-                 ref="description">
         </div>
       </div>
     </div>
