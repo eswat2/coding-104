@@ -1,0 +1,17 @@
+#app {
+  max-width: 450px;
+}
+
+.boxed {
+  width: 95%;
+  margin: 10px;
+}
+
+.m-box {
+  width: 120px;
+}
+
+.header {
+  margin-top: 20px;
+  margin-left: 10px;
+}
