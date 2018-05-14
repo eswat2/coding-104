@@ -1,29 +1,40 @@
 //
-// NOTE:  here's an example of 2 independent vue instances on a single page
-//        that are talking to each other thru a third vue instance that's
-//        surving purely as an eventBus for the elements on the page...
+// NOTE:  here's an example of 2 independent vue instances using a simple
+//        vuex store to manage the shared data...
 //
 //
-const eventBus = new Vue()
+
+const store = new Vuex.Store({
+  state: {
+    todos: []
+  },
+  mutations: {
+    newTodo: function(state, data) {
+      state.todos = [ ...state.todos, data ]
+    },
+    completed: function(state, data) {
+      state.todos[data.indx].completed = data.completed
+    }
+  }
+})
 
 const app = new Vue({
   el: "#app",
   data: {
-    todos: []
+    header: "ToDo's"
   },
   methods: {
     classFor: function(item) {
       return item.completed ? ['alert-success'] : ['alert-primary']
     },
-    newTodo: function(data) {
-      this.todos.push(data)
-    },
-    toggle: function(item) {
-      item.completed = !item.completed
+    toggle: function(item, indx) {
+      store.commit('completed', { indx, completed: !item.completed })
     }
   },
-  created() {
-    eventBus.$on('new:todo', this.newTodo)
+  computed: {
+    todos: function() {
+      return store.state.todos
+    }
   }
 })
 
@@ -42,7 +53,7 @@ const form = new Vue({
       if (title !== '') {
         const obj = { title, description, completed }
 
-        eventBus.$emit('new:todo', obj)
+        store.commit('newTodo', obj)
       }
 
       this.title = ''

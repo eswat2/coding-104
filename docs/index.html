@@ -7,7 +7,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           rel="stylesheet"
           type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"
+            type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.js"
             type="text/javascript"></script>
     <script src="https://use.fontawesome.com/85640850f4.js"
             type="text/javascript"></script>
@@ -16,11 +18,11 @@
   <body>
     <div id="wrapper" class="container mb-3">
       <div id="app">
-        <h2 class="header">ToDo's:</h2>
+        <h2 class="header">{{ header }}:</h2>
         <div class="alert boxed" 
-             v-for="todo in todos" 
+             v-for="(todo, indx) in todos" 
              v-bind:class="classFor(todo)" 
-             v-on:click="toggle(todo)">
+             v-on:click="toggle(todo, indx)">
           <strong>{{ todo.title }}</strong>:
           <i class="fa fa-check ikon" v-if="todo.completed"></i>
           <i class="fa fa-minus ikon" v-else></i>
